@@ -1,0 +1,14 @@
+{
+    "paths": {
+        "js": "js/",
+        "css": "css/",
+        "templates": "templates/",
+        "images": "images/",
+        "maps": "maps/",
+        "fonts": "fonts/",
+        "assets": "assets/",
+        "src": "00_src/",
+        "dist": "01_dist/",
+        "tasks": "02_tasks/"
+    }
+}

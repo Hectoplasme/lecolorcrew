@@ -1,0 +1,43 @@
+from(device)
+	+mq($from: device)
+		{block}
+
+until(device)
+	+mq($until: device)
+		{block}
+
+mobile()
+	+mq($until: $tablet - 1px)
+		{block}
+
+tablet()
+	+mq($from: $tablet)
+		{block}
+
+tablet-only()
+	+mq($from: $tablet, $until: $desktop - 1px)
+		{block}
+
+touch()
+	+mq($until: $desktop - 1px)
+		{block}
+
+desktop()
+	+mq($from: $desktop)
+		{block}
+
+desktop-only()
+	+mq($from: $desktop, $until: $wide - 1px)
+		{block}
+
+wide()
+	+mq($from: $wide)
+		{block}
+
+wide-only()
+	+mq($from: $wide, $until: $fullhd - 1px)
+		{block}
+
+fullhd()
+	+mq($from: $fullhd)
+		{block}

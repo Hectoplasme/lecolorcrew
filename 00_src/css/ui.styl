@@ -1,0 +1,130 @@
+@import './00_utilities/**/**/*'
+
+html
+    font-size 62.5%
+
+body
+    padding-top 50px
+    padding-bottom 50px
+    background-color #fafafa
+    color $c-font
+
+.container
+    width 940px
+    margin 0 auto
+
+h1
+    color black
+    font-weight bold
+    font-size 24px
+    margin 30px 0 20px
+
+    small
+        display block
+
+h2
+    color black
+    font-weight bold
+    font-size 20px
+    line-height 22px
+
+ul
+    padding 0
+    // display inline-block
+
+    >li
+        a:after,
+        a:before
+            display inline-block
+            vertical-align middle
+            padding 4px
+            color white
+            text-transform uppercase
+            position relative
+            font-size 10px
+
+        a:after
+            margin-left 15px
+
+        a:before
+            margin-right 15px
+
+        &[data-state="todo"] a:after
+            content 'Todo'
+            background red
+
+        &[data-state="doing"] a:after
+            content 'Doing'
+            background orange
+
+        &[data-state="done"] a:after
+            content 'Done'
+            background green
+
+        &[data-type="d"] a:before
+            content 'Desktop'
+            background #bfbfbf
+
+        &[data-type="md"] a:before,
+        &[data-type="dm"] a:before
+            content 'Mobile + Desktop'
+            background #bfbfbf
+
+        & + li
+            margin-top 10px
+
+        a
+            display inline-block
+            vertical-align middle
+            color #999
+            line-height 17px
+
+            &:hover
+                color black
+
+.panel
+    padding-top 25px
+    padding-bottom 25px
+
+    border-top 1px solid #ddd
+
+    &:first-child
+        border-top 0
+
+.ui-header
+    position fixed
+    top 20px
+    left 20px
+    background-color white
+    padding 30px
+    z-index 2
+
+.ui-nav
+    margin-top 30px
+    font-family Courier, sans-serif
+    font-size 12px
+
+    >li
+        a
+            display block
+            color #999
+
+            &:hover
+                color black
+
+.ui-item
+    display block
+
+    a,
+    code
+        display block
+        width auto
+code
+    border-radius 2px
+    background-color #eee
+    display inline-block
+    padding 3px 30px
+    font-family Courier, sans-serif
+    font-size 12px
+    margin 20px 0 10px
+    text-align center

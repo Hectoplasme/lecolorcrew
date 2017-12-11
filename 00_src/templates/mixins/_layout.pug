@@ -1,0 +1,22 @@
+block vars
+
+doctype html
+html(lang="fr")
+    head
+        include ../partials/_meta
+        block extraStyles
+
+    body(class=bodyClasses)
+        block header
+            include ../components/_header
+
+        main.main(role="main")
+            block content
+
+        block footer
+            include ../components/_footer
+
+        block extraMarkup
+
+    include ../partials/_scripts
+    block extraScripts

@@ -1,0 +1,18 @@
+doctype html
+html(lang="fr")
+    head
+        meta(charset="utf8")
+        meta(name="viewport" content="width=device-width, user-scalable=no")
+        link(rel="stylesheet" media="screen" type="text/css" href="assets/css/styles.css")
+        link(rel="stylesheet" href="assets/css/ui.css")
+
+    body(class="tpl-ui")
+        main.container(role="main")
+            h1 Liste des templates
+            div.panel
+                ul.list.list--templates
+                    li.list__item(data-state="todo" data-type="md")
+                        a(href="T01-homepage.html") T01 - Homepage
+
+
+    include partials/_scripts
