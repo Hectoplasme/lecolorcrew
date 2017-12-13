@@ -4,11 +4,27 @@
 
 .heading-2
     font-primary()
-    font-size $size-regular
+    bold()
+    // font-size $size-regular
+    font-size 5vw
+    line-height 1.2
+
+    +desktop()
+        font-size 5.5rem
+
+    +wide()
+        font-size 7rem
 
 .heading-3
     font-primary()
     font-size $size-regular
+
+.heading-5
+    font-primary()
+    upper()
+    black()
+    font-size $size-regular
+
 
 .teasing-1
     font-primary()
