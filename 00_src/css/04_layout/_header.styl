@@ -6,7 +6,7 @@
         right 0
         height 100%
         opacity 0
-        background linear-gradient(to right, rgba(255,255,255,1) 10%, rgba(255,255,255,0))
+        background linear-gradient(to right, #fff 20%, rgba(255,255,255,0) 125%)
         transition opacity 200ms linear
 
         +tablet()
@@ -17,16 +17,31 @@
         #s_pink
             transform scale(1) translate(-3rem, 6rem) rotate(-35deg)
             transition transform 200ms ease
+
+            +tablet()
+                transform none
+
         #s_text
             opacity 0
             transition opacity 200ms linear
 
+            +tablet()
+                opacity 1
+
     .menu__toggler
-        transform translate(-3.2rem, -2.3rem) scale(1.4)
+        transform translate(-2.8rem, -2rem) scale(1.4)
         transition transform 200ms ease
+
+        +tablet()
+            right 2.5rem
+            bottom 1.3rem
+            transform none
     .menu
         top -2rem
         transition left 200ms ease, top 200ms ease
+
+        +tablet()
+            top 0rem
 
 .header.is-open
     .menu

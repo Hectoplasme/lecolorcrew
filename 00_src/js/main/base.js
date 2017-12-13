@@ -5,7 +5,7 @@ require('es6-shim');
 //import modules
 const pouet = require('../libs/pouet.js');
 const utils = require('../libs/utils.js');
-//const moduleName = require('./modules/module-name.js');
+const toggleMenu = require('./modules/toggle-menu.js');
 
 (function ($, pouet, win) {
     $(function () {
@@ -36,8 +36,6 @@ const utils = require('../libs/utils.js');
             },
 
             initDesktopOnlyModules() {
-                // Example
-                //this.pouet.conditionalLoad('.js-module-class', moduleName.initialize.bind(moduleName));
 
             },
 
@@ -48,7 +46,7 @@ const utils = require('../libs/utils.js');
 
             initCommonModules() {
                 // Example
-                //this.pouet.conditionalLoad('.js-module-class', moduleName.initialize.bind(moduleName));
+                this.pouet.conditionalLoad('.js-menu-toggler', toggleMenu.initialize.bind(toggleMenu));
             },
 
             pouet: {
