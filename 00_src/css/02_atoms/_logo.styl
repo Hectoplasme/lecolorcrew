@@ -1,0 +1,45 @@
+.logo
+    width 10rem
+    position relative
+
+    +tablet()
+        width 80%
+        max-width 20rem
+        margin 3vw auto 1rem
+
+    +desktop()
+        margin 4rem auto 1rem
+
+#logo
+    width 10rem
+    height 10rem
+
+    +tablet()
+        width 100%
+        height 100%
+
+    #s_text
+        opacity 1
+        transition opacity 200ms linear
+    #s_pink
+        transform scale(0.5) translate(7rem, 7rem) rotate(-35deg)
+        transition transform 200ms ease
+
+        polyline
+            fill $c-primary
+            transition fill 200ms ease
+
+        +tablet()
+            transform none
+
+            polyline
+                fill $c-secondary
+
+    #s_yellow
+        display none
+        +tablet()
+            display block
+    #s_blue
+        display none
+        +tablet()
+            display block

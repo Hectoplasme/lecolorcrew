@@ -1,0 +1,58 @@
+.header
+    &__background
+        position absolute
+        top 0
+        left 0
+        right 0
+        height 100%
+        opacity 0
+        background linear-gradient(to right, rgba(255,255,255,1) 10%, rgba(255,255,255,0))
+        transition opacity 200ms linear
+
+        +tablet()
+            display none
+
+.header.is-scrolling
+    #logo
+        #s_pink
+            transform scale(1) translate(-3rem, 6rem) rotate(-35deg)
+            transition transform 200ms ease
+        #s_text
+            opacity 0
+            transition opacity 200ms linear
+
+    .menu__toggler
+        transform translate(-3.2rem, -2.3rem) scale(1.4)
+        transition transform 200ms ease
+    .menu
+        top -2rem
+        transition left 200ms ease, top 200ms ease
+
+.header.is-open
+    .menu
+        left 0
+
+        &__item
+            opacity 1
+            transform translateX(0)
+            transition transform 200ms ease, opacity 200ms linear
+
+    .header__background
+        opacity 1
+        transition opacity 200ms linear
+
+    .menu__toggler
+        .burger
+            padding 2px
+            #top
+                transform-origin 0px 3px !important
+                transform rotate(45deg) scale(1.4) translate(-1px, -1px)
+                transition transform 200ms ease
+            #center
+                transform-origin 10px 3px !important
+                transform scale(0,0)
+                transition transform 200ms ease
+            #bottom
+                transform-origin 0px 21px !important
+                transform rotate(-45deg) scale(1.4) translate(-3px, 2px)
+                transition transform 200ms ease

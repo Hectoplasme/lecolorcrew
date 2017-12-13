@@ -1,0 +1,53 @@
+$size-sidebar-tablet = calc(25vw + 2.5rem)
+$size-main-tablet = 75vw
+$max-size-sidebar = 30rem
+$min-size-main = calc(100vw - 30rem)
+
+.header
+    position fixed
+    z-index 999
+    top 0
+    left 0
+    width 10rem
+    min-height 8rem
+    transition width 200ms ease
+
+    +tablet()
+        width $size-sidebar-tablet
+        max-width $max-size-sidebar
+
+.menu
+    position relative
+    left - 100vw
+    top 0
+    width 100vw
+    height 100vh
+    transition left 200ms ease, top 200ms ease
+
+    +tablet()
+        width $size-sidebar-tablet
+        padding-left 1.5rem
+
+    +desktop()
+        width $max-size-sidebar
+        padding-left 5rem
+
+.main
+    padding 10rem 4rem 4rem
+    min-height 100vh
+
+    +tablet()
+        width $size-main-tablet
+        margin-left $size-sidebar-tablet
+        padding 5rem 10rem 5rem 2.5rem
+
+    +desktop()
+        width $min-size-main
+        margin-left $max-size-sidebar
+
+.header.is-open
+    width 100vw
+    transition width 200ms ease
+
+    +tablet()
+        width $size-sidebar-tablet

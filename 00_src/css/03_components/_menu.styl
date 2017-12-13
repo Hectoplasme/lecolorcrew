@@ -1,0 +1,32 @@
+.menu
+    &__toggler
+        position absolute
+        right 0.2rem
+        bottom 2.4rem
+        height 2rem
+        width 3rem
+        background transparent
+        border none
+        transform none
+        transition transform 200ms ease
+
+        .burger
+            #top
+                transform-origin 0px 3px !important
+            #center
+                transform-origin 10px 3px !important
+            #bottom
+                transform-origin 0px 21px !important
+            #top, #center, #bottom
+                transform none
+                transition transform 200ms ease
+
+        &:hover
+            cursor pointer
+
+    &__item
+        bold()
+        opacity 0
+        display block
+        padding 0.5rem 2rem
+        transform translateX(-2rem)
