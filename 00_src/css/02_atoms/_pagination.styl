@@ -1,0 +1,32 @@
+.pagination
+    position relative
+    padding-top 6rem
+
+    +tablet()
+        padding-top 0
+
+    &__item
+        position relative
+        display inline-block
+        margin -10rem 0 10rem
+
+        [class*='icon-']
+            position absolute
+            top 50%
+            transform translateY(-50%)
+            transition opacity 1s ease
+
+        &:hover
+            .link--big
+                opacity 1
+            [class*='icon-']
+                opacity 0.2
+
+    &__next
+        [class*='icon-']
+            left 0
+
+    &__previous
+        float right
+        [class*='icon-']
+            right 0

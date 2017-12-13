@@ -1,0 +1,21 @@
+.gallery
+    &__item
+        margin 3rem 0
+
+        +tablet()
+            float left
+            display inline-block
+            width 45%
+            margin 5rem 0
+
+            &:nth-of-type(2n)
+                position relative
+                float right
+                top -5rem
+
+            &:nth-last-of-type(-n+2)
+                margin-bottom 0
+
+            &:nth-of-type(3n)
+                width 90%
+                margin-bottom 7rem

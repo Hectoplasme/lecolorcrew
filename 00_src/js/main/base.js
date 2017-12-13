@@ -5,8 +5,10 @@ require('es6-shim');
 //import modules
 const pouet = require('../libs/pouet.js');
 const utils = require('../libs/utils.js');
+const resetPosition = require('./modules/reset-position.js');
 const toggleMenu = require('./modules/toggle-menu.js');
 const fixedPresentation = require('./modules/fixed-presentation');
+const galleryParallax = require('./modules/gallery-parallax');
 
 (function ($, pouet, win) {
     $(function () {
@@ -24,6 +26,7 @@ const fixedPresentation = require('./modules/fixed-presentation');
                 }
 
                 this.initCommonModules();
+                resetPosition();
             },
 
             bindUI() {
@@ -37,7 +40,6 @@ const fixedPresentation = require('./modules/fixed-presentation');
             },
 
             initDesktopOnlyModules() {
-
             },
 
             initMobileOnlyModules() {
@@ -46,9 +48,11 @@ const fixedPresentation = require('./modules/fixed-presentation');
             },
 
             initCommonModules() {
-                // Example
                 this.pouet.conditionalLoad('.js-menu-toggler', toggleMenu.initialize.bind(toggleMenu));
                 this.pouet.conditionalLoad('.js-presentation', fixedPresentation.initialize.bind(fixedPresentation));
+                this.pouet.conditionalLoad('.js-parallax', galleryParallax.initialize.bind(galleryParallax));
+
+
             },
 
             pouet: {

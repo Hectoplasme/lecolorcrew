@@ -1,6 +1,14 @@
 .heading-1
     font-primary()
-    font-size $size-regular
+    black()
+    font-size 10vw
+    line-height 1
+
+    +desktop()
+        font-size 7rem
+
+    +wide()
+        font-size 11rem
 
 .heading-2
     font-primary()
@@ -18,6 +26,17 @@
 .heading-3
     font-primary()
     font-size $size-regular
+
+.heading-4
+    font-primary()
+    upper()
+    font-size $size-small
+    line-height 1.4
+
+    +tablet()
+        light()
+        font-size $size-medium
+
 
 .heading-5
     font-primary()
@@ -38,7 +57,13 @@
 
 .text
     font-primary()
-    font-size $size-regular
+    regular()
+    font-size $size-smaller
+    margin-bottom 1rem
+
+    +tablet()
+        light()
+        font-size $size-regular
 
 .bold
     bold()
@@ -46,3 +71,31 @@
 .btn
     font-primary()
     font-size $size-regular
+
+.hightlight
+    bold()
+    position relative
+    z-index -1
+    display inline
+
+    &:before
+        content ''
+        position absolute
+        z-index -1
+        top 0.8rem
+        left 0.8rem
+        width 100%
+        height 100%
+        background $c-primary
+
+.link--big
+    black()
+    upper()
+    font-size $size-large
+    max-width 40rem
+    line-height 1
+    opacity 0.2
+    transition opacity 1s ease
+
+    +tablet()
+        font-size $size-larger
