@@ -1,13 +1,19 @@
 //add is-scrolling class to mobile when we scroll and delete it when we reach the top
-header.header
+header.header.is-open
     div.header__background
     div.logo
         include ../svg/_logo
 
-        //add the is-open class
         button.menu__toggler
             include ../svg/_burger
     nav.menu
-        a.menu__item(href="#" style="transition-delay: 100ms") Accueil
-        a.menu__item(href="#" style="transition-delay: 200ms") Le color what ?!
-        a.menu__item(href="#" style="transition-delay: 300ms") Tous les thèmes
+        a.menu__item.heading-5(href="#" style="transition-delay: 100ms") Accueil
+        a.menu__item.heading-5(href="#" style="transition-delay: 200ms") Le color what ?!
+        a.menu__item.heading-5(href="#" style="transition-delay: 300ms") Tous les thèmes
+        div.menu__item.social(style="transition-delay: 400ms")
+            a.social__item.social-yellow(href="#")
+                i.icon-instagram
+            a.social__item.social-pink(href="#")
+                i.icon-facebook
+            a.social__item.social-blue(href="#")
+                i.icon-tumblr 
