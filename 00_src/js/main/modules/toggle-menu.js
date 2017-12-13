@@ -1,6 +1,5 @@
-const moduleName = {
+const toggleMenu = {
         initialize() {
-            console.log('pouet','it works !');
             this.bindUI();
             this.setProperties();
             this.bindEvents();
@@ -41,4 +40,4 @@ const moduleName = {
         }
 }
 
-module.exports = moduleName;
+module.exports = toggleMenu;

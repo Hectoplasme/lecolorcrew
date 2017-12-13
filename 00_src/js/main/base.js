@@ -6,6 +6,7 @@ require('es6-shim');
 const pouet = require('../libs/pouet.js');
 const utils = require('../libs/utils.js');
 const toggleMenu = require('./modules/toggle-menu.js');
+const fixedPresentation = require('./modules/fixed-presentation');
 
 (function ($, pouet, win) {
     $(function () {
@@ -47,6 +48,7 @@ const toggleMenu = require('./modules/toggle-menu.js');
             initCommonModules() {
                 // Example
                 this.pouet.conditionalLoad('.js-menu-toggler', toggleMenu.initialize.bind(toggleMenu));
+                this.pouet.conditionalLoad('.js-presentation', fixedPresentation.initialize.bind(fixedPresentation));
             },
 
             pouet: {
