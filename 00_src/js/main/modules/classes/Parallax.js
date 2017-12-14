@@ -101,6 +101,8 @@ Sptkparallax.prototype.scroll = function scroll() {
         var elRect = elContainer.getBoundingClientRect();
         var elTop = elRect.top + scrollTop;
 
+        var parallax = self.parallax;
+
         // Calc parallax starting based on ParentElement ScrollTop and Window Height
         var startTop = elTop - screenOffset;
 
@@ -108,7 +110,7 @@ Sptkparallax.prototype.scroll = function scroll() {
         var dist = scrollTop - startTop;
 
         // For each elements
-        Array.prototype.forEach.call(elements, function(el, i) {
+        Array.prototype.forEach.call(elements, function (el, i) {
 
             var elDist = (dist > 0) ? - dist : dist;
             var elRatio = el.getAttribute('data-ratio') * 1 || ratio;
@@ -133,7 +135,7 @@ Sptkparallax.prototype.scroll = function scroll() {
 
 
             //ANIMATE
-            if (scrollTop > startTop && scrollTop > 5) {
+            if (scrollTop > startTop && scrollTop > 5 && (parallax || opacity)) {
                 // Check direction
                 if (direction === "vertical") {
                     if (parallax === true) {
@@ -176,5 +178,17 @@ Sptkparallax.prototype.scroll = function scroll() {
     });
 };
 
+Sptkparallax.prototype.disable = function disable() {
+    const self = this;
+    self.parallax = false;
+
+
+};
+
+Sptkparallax.prototype.enable = function enable() {
+    const self = this;
+    self.parallax = true;
+
+}
 
 module.exports = Sptkparallax;

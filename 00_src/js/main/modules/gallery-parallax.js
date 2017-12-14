@@ -17,17 +17,27 @@ const galleryParallax = {
     },
 
     setProperties() {
+        this.tabletWidth = 768;
+        this.parallax = [];
+        this.isParallaxEnabled = true;
+
+        if (window.innerWidth < this.tabletWidth) {
+            this.isParallaxEnabled = false;
+        }
     },
 
-    bindEvents() {},
+    bindEvents() {
+        window.addEventListener('resize', this.onResize.bind(this))
+    },
 
     initParallax() {
+        var parallax = this.isParallaxEnabled ? true : false;
         for (let i = 0, j = this.ui.$parallaxContainer.length; i < j; i++) {
             const parallaxContainer = this.ui.$parallaxContainer[i];
 
-            this.parallax = new Parallax(parallaxContainer, {
+            this.parallax[i] = new Parallax(parallaxContainer, {
                 scrollType: "scroll",
-                parallax: true,
+                parallax: parallax,
                 opacity: false,
                 scale: false,
                 direction: "vertical",
@@ -36,6 +46,30 @@ const galleryParallax = {
                 speedRatioSlow: .25,
                 itemsClass: this.ui.$parallaxItems
             });
+        }
+    },
+
+    enableParallax() {
+        this.isParallaxEnabled = true;
+        for (let i = 0, j = this.ui.$parallaxContainer.length; i < j; i++) {
+            this.parallax[i].enable();
+            // console.log(this.parallax[i].parallax)
+        }
+    },
+
+    disableParallax() {
+        this.isParallaxEnabled = false;
+        for (let i = 0, j = this.ui.$parallaxContainer.length; i < j; i++) {
+            this.parallax[i].disable();
+            console.log(this.parallax[i].parallax)
+        }
+    },
+
+    onResize() {
+        if (window.innerWidth >= this.tabletWidth && !this.isParallaxEnabled) {
+            this.enableParallax();
+        } else if (window.innerWidth < this.tabletWidth && this.isParallaxEnabled){
+            this.disableParallax();
         }
     }
 }
