@@ -14,13 +14,28 @@
             background rgba(255,255,255,0)
             transition background 500ms linear
 
-        &.is-zoomed
+    &.is-zoomed
+        .carousel__clone
             z-index 5
             transition all 250ms ease
-            // height auto
-            // width auto
-            // max-height 90vh
-            // max-width 90vw
 
             &:before
                 background rgba(255,255,255,1)
+
+        .carousel__btn
+            display block
+
+            &:hover
+                cursor pointer
+    &__btn
+        background transparent
+        border none
+        color $c-font
+        display none
+
+        &--close
+            position fixed
+            z-index 1000
+            top 5rem
+            right 5rem
+            font-size 2.5rem

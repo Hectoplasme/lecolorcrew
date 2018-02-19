@@ -194,7 +194,6 @@ Sptkparallax.prototype.disable = function disable() {
 Sptkparallax.prototype.enable = function enable() {
     const self = this;
     self.parallax = true;
-
 }
 
 module.exports = Sptkparallax;

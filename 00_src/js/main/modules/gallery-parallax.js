@@ -30,6 +30,7 @@ const galleryParallax = {
     bindEvents() {
         window.addEventListener('resize', this.onResize.bind(this));
         window.addEventListener('zoom:active', this.disableParallax.bind(this));
+        window.addEventListener('zoom:inactive', this.enableParallax.bind(this));
 
     },
 
