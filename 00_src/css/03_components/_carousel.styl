@@ -1,0 +1,26 @@
+.carousel
+    &__clone
+        position fixed
+        z-index -1
+
+        &:before
+            content ''
+            position fixed
+            z-index -1
+            top 0
+            left 0
+            bottom 0
+            right 0
+            background rgba(255,255,255,0)
+            transition background 500ms linear
+
+        &.is-zoomed
+            z-index 5
+            transition all 250ms ease
+            // height auto
+            // width auto
+            // max-height 90vh
+            // max-width 90vw
+
+            &:before
+                background rgba(255,255,255,1)
