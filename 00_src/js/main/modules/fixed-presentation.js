@@ -38,6 +38,9 @@ const fixedPresentation = {
 
         if(this.opacity === 0 && window.innerWidth < 768) {
             this.ui.header.classList.add('is-scrolling');
+            this.ui.$presentation.classList.add('is-hidden');
+        } else if (this.opacity === 0 ) {
+            this.ui.$presentation.classList.add('is-hidden');
         } else {
             this.ui.header.classList.remove('is-scrolling');
         }

@@ -29,6 +29,7 @@ const Sptkparallax = function (element, options) {
     this.speedRatioSlow = options.speedRatioSlow || .25; // Scroll speed (slower)
     this.offset = options.offset || "middle"; // Offset default
     this.itemsClass = options.itemsClass || ".sptk_parallax";
+    this.disabled = false;
 
     // Do method if $container isn't empty
     if (this.$container) {
@@ -102,6 +103,7 @@ Sptkparallax.prototype.scroll = function scroll() {
         var elTop = elRect.top + scrollTop;
 
         var parallax = self.parallax;
+        var disabled = self.disabled;
 
         // Calc parallax starting based on ParentElement ScrollTop and Window Height
         var startTop = elTop - screenOffset;
@@ -163,7 +165,12 @@ Sptkparallax.prototype.scroll = function scroll() {
                 }
 
                 // DON'T ANIMATE
-            } else {
+            } else if(!disabled){
+
+                self.disabled = true;
+                var evt = new CustomEvent('parallax:disabled');
+                window.dispatchEvent(evt);
+
                 //When user scroll on top of document
                 TweenLite.to(el, 0.8, {y: 0+"px", x: 0+"px", force3D: true,overwrite: true});
                 if (opacity === "show") {
@@ -181,8 +188,7 @@ Sptkparallax.prototype.scroll = function scroll() {
 Sptkparallax.prototype.disable = function disable() {
     const self = this;
     self.parallax = false;
-
-
+    window.scrollBy(1, 1);
 };
 
 Sptkparallax.prototype.enable = function enable() {

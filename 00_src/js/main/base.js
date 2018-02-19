@@ -9,6 +9,7 @@ const resetPosition = require('./modules/reset-position.js');
 const toggleMenu = require('./modules/toggle-menu.js');
 const fixedPresentation = require('./modules/fixed-presentation');
 const galleryParallax = require('./modules/gallery-parallax');
+const homeCarousel = require('./modules/home-carousel');
 
 (function ($, pouet, win) {
     $(function () {
@@ -40,6 +41,7 @@ const galleryParallax = require('./modules/gallery-parallax');
             },
 
             initDesktopOnlyModules() {
+                this.pouet.conditionalLoad('.js-gallery-item', homeCarousel.initialize.bind(homeCarousel));
             },
 
             initMobileOnlyModules() {

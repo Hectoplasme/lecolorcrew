@@ -13,7 +13,8 @@ const galleryParallax = {
         this.ui = {};
 
         this.ui.$parallaxContainer = document.querySelectorAll('.js-parallax');
-        this.ui.$parallaxItems = '.js-parallax-item';
+        this.ui.$parallaxItems =  document.querySelectorAll('.js-parallax-item');
+        this.ui.$parallaxItemsClass = '.js-parallax-item';
     },
 
     setProperties() {
@@ -27,7 +28,9 @@ const galleryParallax = {
     },
 
     bindEvents() {
-        window.addEventListener('resize', this.onResize.bind(this))
+        window.addEventListener('resize', this.onResize.bind(this));
+        window.addEventListener('zoom:active', this.disableParallax.bind(this));
+
     },
 
     initParallax() {
@@ -44,7 +47,7 @@ const galleryParallax = {
                 offset: "middle",
                 speedRatio: .5,
                 speedRatioSlow: .25,
-                itemsClass: this.ui.$parallaxItems
+                itemsClass: this.ui.$parallaxItemsClass
             });
         }
     },
@@ -61,7 +64,7 @@ const galleryParallax = {
         this.isParallaxEnabled = false;
         for (let i = 0, j = this.ui.$parallaxContainer.length; i < j; i++) {
             this.parallax[i].disable();
-            console.log(this.parallax[i].parallax)
+            // console.log(this.parallax[i].parallax)
         }
     },
 
