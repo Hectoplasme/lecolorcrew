@@ -26,6 +26,12 @@ const fixedPresentation = {
     bindEvents() {
         window.addEventListener('scroll', this.onScroll.bind(this));
         window.addEventListener('resize', this.onResize.bind(this));
+        window.addEventListener('zoom:active', this.onZoom.bind(this));
+    },
+
+    onZoom() {
+        this.ui.$presentation.classList.add('is-hidden');
+        this.onResize();
     },
 
     onScroll() {
