@@ -24,18 +24,98 @@
 
         .carousel__btn
             display block
+            opacity 1
+            transition opacity 250ms linear 250ms
+
+            &--next, &--previous
+                opacity 0.4
+                transition all 250ms ease
+
+                &:hover
+                    opacity 1
 
             &:hover
                 cursor pointer
+
     &__btn
+        position fixed
+        z-index 900
         background transparent
         border none
         color $c-font
         display none
+        opacity 0
+        transition opacity 250ms linear 250ms
 
         &--close
-            position fixed
-            z-index 1000
             top 5rem
             right 5rem
             font-size 2.5rem
+
+        &--next, &--previous
+            position absolute
+            top 0
+            opacity 0.4
+            transform scale(0.8)
+            // color $c-primary
+            transition all 250ms ease-in-out
+
+            i:before
+                font-size 3.5rem
+
+            &:hover
+                transform scale(1.5)
+                opacity 1
+                // color $c-font
+
+        &--next
+            left 0rem
+
+        &--previous
+            right 0rem
+
+        +tablet()
+            &--next
+                left 2rem
+
+            &--previous
+                right 2rem
+
+            &--next, &--previous
+                // bottom 0rem
+                // bottom auto
+                // top 48vh
+
+                i:before
+                    font-size 6rem
+
+    &__navigation
+        position fixed
+        display block
+        z-index 900
+        top 0
+        height 0px
+        left 0
+        width 0px
+        opacity 1
+        transition all 0ms linear 1s
+
+
+        &__infos
+            position absolute
+            z-index 901
+            left 6rem
+            top 0
+            height 100%
+            width calc(100% - 12rem)
+            padding-top 1rem
+
+            +tablet()
+                left 12rem
+                width calc(100% - 24rem)
+
+
+        &.is-hiding
+            display none
+            opacity 0
+            transition all 0ms linear 1s

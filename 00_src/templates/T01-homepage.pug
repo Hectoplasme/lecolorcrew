@@ -66,8 +66,16 @@ block content
 
     div.js-carousel.carousel
         div.js-carousel-clone-container.carousel__clone
-        button.js-carousel-close.carousel__btn.carousel__btn--close
+        button.js-carousel-btn.js-carousel-close.carousel__btn.carousel__btn--close(style="opacity: 0")
             i.icon-close
+        div.js-carousel-btn-nav.carousel__navigation.is-hiding
+            button.js-carousel-btn.js-carousel-next.carousel__btn.carousel__btn--next(style="opacity: 0")
+                i.icon-arrow-left
+            button.js-carousel-btn.js-carousel-previous.carousel__btn.carousel__btn--previous(style="opacity: 0")
+                i.icon-arrow-right
+            div.carousel__navigation__infos.infos
+                p.heading-4 L'espace
+                p.text par #[a.hightlight(href="#") Laurianne Terrier]
 
     div.pagination
         a.pagination__item.pagination__next(href="#")

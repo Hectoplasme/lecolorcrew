@@ -41,7 +41,6 @@ const homeCarousel = require('./modules/home-carousel');
             },
 
             initDesktopOnlyModules() {
-                this.pouet.conditionalLoad('.js-gallery-item', homeCarousel.initialize.bind(homeCarousel));
             },
 
             initMobileOnlyModules() {
@@ -50,6 +49,7 @@ const homeCarousel = require('./modules/home-carousel');
             },
 
             initCommonModules() {
+                this.pouet.conditionalLoad('.js-gallery-item', homeCarousel.initialize.bind(homeCarousel));
                 this.pouet.conditionalLoad('.js-menu-toggler', toggleMenu.initialize.bind(toggleMenu));
                 this.pouet.conditionalLoad('.js-presentation', fixedPresentation.initialize.bind(fixedPresentation));
                 this.pouet.conditionalLoad('.js-parallax', galleryParallax.initialize.bind(galleryParallax));

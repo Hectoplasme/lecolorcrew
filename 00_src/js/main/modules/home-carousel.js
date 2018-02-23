@@ -13,7 +13,9 @@ const homeCarousel = {
             this.ui.$galleryItems =  document.querySelectorAll('.js-gallery-item');
             this.ui.$carousel = document.querySelector('.js-carousel');
             this.ui.$clone = document.querySelector('.js-carousel-clone-container');
+            this.ui.$btn = this.ui.$carousel.querySelectorAll('.js-carousel-btn');
             this.ui.$close = this.ui.$carousel.querySelector('.js-carousel-close');
+            this.ui.$nav = this.ui.$carousel.querySelector('.js-carousel-btn-nav');
         },
 
         setProperties() {
@@ -29,9 +31,9 @@ const homeCarousel = {
                 itemWidth : 0,
                 itemHeight : 0
             }
-            this.padding = 50;
             this.isZoomed = false;
             this.itemActive;
+            this.marginTop = -20;
 
         },
 
@@ -40,7 +42,7 @@ const homeCarousel = {
                 item.addEventListener('click', this.onClick.bind(this));
             }
             this.ui.$close.addEventListener('click', this.unzoomItem.bind(this));
-            // window.addEventListener('parallax:disabled', this.zoomItem.bind(this));
+            window.addEventListener('resize', this.onResize.bind(this));
         },
 
         onClick(e) {
@@ -97,13 +99,33 @@ const homeCarousel = {
 
             setTimeout(() => {
                 document.body.style.overflow = 'hidden';
-                this.ui.$clone.style.height = this.position.itemHeight * this.ratio + 'px';
-                this.ui.$clone.style.width = this.position.itemWidth * this.ratio + 'px';
-                this.ui.$clone.style.top = this.position.windowY - this.position.itemHeight * this.ratio / 2 + 'px';
-                this.ui.$clone.style.left = this.position.windowX - this.position.itemWidth *this.ratio / 2  + 'px';
+
+                this.setPositionCenter();
+
+                for (let item of this.ui.$btn) {
+                    item.style.removeProperty('opacity');
+                }
             }, 250)
 
+            setTimeout(() => {
+                this.ui.$nav.classList.remove('is-hiding');
+            }, 400)
+
             this.isZoomed = true;
+        },
+
+        setPositionCenter() {
+
+            this.ui.$clone.style.height = this.position.itemHeight * this.ratio + 'px';
+            this.ui.$clone.style.width = this.position.itemWidth * this.ratio + 'px';
+            this.ui.$clone.style.top = this.position.windowY - this.position.itemHeight * this.ratio / 2 + this.marginTop + 'px';
+            this.ui.$clone.style.left = this.position.windowX - this.position.itemWidth *this.ratio / 2  + 'px';
+
+            this.ui.$nav.style.left = this.ui.$clone.style.left;
+            this.ui.$nav.style.width = this.ui.$clone.style.width;
+            this.ui.$nav.style.height = this.position.windowHeight - (this.position.windowY - this.position.itemHeight * this.ratio / 2 + this.position.itemHeight * this.ratio + this.marginTop) - 10 + 'px';
+            this.ui.$nav.style.top = this.position.windowY - this.position.itemHeight * this.ratio / 2 + this.marginTop + this.position.itemHeight * this.ratio + 'px';
+
         },
 
         unzoomItem(item) {
@@ -114,9 +136,18 @@ const homeCarousel = {
             this.ui.$clone.style.height = this.position.itemHeight + 'px';
             this.ui.$clone.style.width = this.position.itemWidth + 'px';
 
+
+
+            setTimeout(() => {
+                this.ui.$nav.classList.add('is-hiding');
+            }, 200)
+
             setTimeout(() => {
                 this.ui.$carousel.classList.remove('is-zoomed');
                 document.body.style.removeProperty('overflow');
+                for (let item of this.ui.$btn) {
+                    item.style.opacity = "0";
+                }
             }, 250)
             setTimeout(() => {
                 this.ui.$clone.innerHTML = '';
@@ -126,6 +157,29 @@ const homeCarousel = {
                 this.ui.$clone.style.removeProperty('width');
                 this.enableParallax();
             }, 500)
+        },
+
+        onResize() {
+            this.position = {
+                windowX : window.innerWidth / 2,
+                windowY : window.innerHeight / 2,
+                windowWidth : window.innerWidth,
+                windowHeight : window.innerHeight,
+                itemX : 0,
+                itemY : 0,
+                itemCenterX: 0,
+                itemCenterY: 0,
+                itemWidth : 0,
+                itemHeight : 0
+            }
+
+            this.resetProperties(this.itemActive.querySelector('img'));
+
+            if (this.isZoomed) {
+                this.setPositionCenter();
+            }
+
+
         }
 
 
