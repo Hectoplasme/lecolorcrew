@@ -31,5 +31,23 @@
     &__item
         opacity 0
         display block
-        padding 0.5rem 2rem
+        margin 0.5rem 2rem
         transform translateX(-2rem)
+
+        +tablet()
+            display inline-block
+
+            &:not(.social)
+                &:hover:before
+                    height 1rem
+                    transition height 250ms ease-in
+                &:before
+                    content ''
+                    position absolute
+                    z-index -1
+                    bottom 0
+                    left 0
+                    right 0
+                    height 0
+                    background $c-primary
+                    transition height 250ms ease-in

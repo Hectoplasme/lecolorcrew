@@ -45,14 +45,16 @@
 
 .header.is-open
     z-index 1003
-    
+
     .menu
         left 0
 
         &__item
+            position relative
             opacity 1
             transform translateX(0)
             transition transform 200ms ease, opacity 200ms linear
+
 
     .header__background
         opacity 1
